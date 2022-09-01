@@ -1,12 +1,23 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AppComponent } from '../app.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AppComponent
+  ],
   imports: [
-    CommonModule
-  ]
+    CommonModule, 
+    SharedModule.forRoot()
+  ],
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders<any> {
+    return {
+      ngModule: SharedModule,
+      providers: [],
+    };
+  }
+}
